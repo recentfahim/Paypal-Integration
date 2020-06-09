@@ -15,7 +15,7 @@ else:
     print('Link is unreachable')
     exit(1)
 
-raw_input()
+input()
 print('Capturing Order...')
 capture_id =""
 response = CaptureOrder().capture_order(order_id)
@@ -33,16 +33,16 @@ if response.status_code == 201:
     for link in response.result.links:
         print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
         
-print('Refunding Order...')
-response = RefundOrder().refund_order(capture_id)
-if response.status_code == 201:
-    print('Refunded Successfully\n')
-    print('Status Code: ', response.status_code)
-    print('Status: ', response.result.status)
-    print('Refund ID: ', response.result.id)
-    print('Links: ')
-    for link in response.result.links:
-        print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
+# print('Refunding Order...')
+# response = RefundOrder().refund_order(capture_id)
+# if response.status_code == 201:
+#     print('Refunded Successfully\n')
+#     print('Status Code: ', response.status_code)
+#     print('Status: ', response.result.status)
+#     print('Refund ID: ', response.result.id)
+#     print('Links: ')
+#     for link in response.result.links:
+#         print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
 
 
 

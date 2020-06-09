@@ -14,8 +14,8 @@ class CreateOrder(PayPalClient):
             {
                 "intent": "AUTHORIZE",
                 "application_context": {
-                    "return_url": "https://www.example.com",
-                    "cancel_url": "https://www.example.com",
+                    "return_url": "http://127.0.0.1:8000/api/v1/capture-order/",
+                    "cancel_url": "http://127.0.0.1:8000/api/v1/capture-order/",
                     "brand_name": "EXAMPLE INC",
                     "landing_page": "BILLING",
                     "shipping_preference": "SET_PROVIDED_ADDRESS",
@@ -113,8 +113,8 @@ class CreateOrder(PayPalClient):
             {
                 "intent": "AUTHORIZE",
                 "application_context": {
-                    "return_url": "https://www.example.com",
-                    "cancel_url": "https://www.example.com"
+                    "return_url": "http://127.0.0.1:8000/api/v1/capture-order/",
+                    "cancel_url": "http://127.0.0.1:8000/api/v1/capture-order/"
                 },
                 "purchase_units": [
                     {

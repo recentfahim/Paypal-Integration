@@ -16,6 +16,14 @@ class CreateOrder(APIView):
 
 
 class CaptureOrder(APIView):
+
+    def get(self, request):
+        data = request.data
+        params = request.query_params
+        print(data)
+        print(params)
+        return Response(data, status=status.HTTP_200_OK)
+
     def post(self, request):
         data = request.data
         order_id = data.get('order_id') or None

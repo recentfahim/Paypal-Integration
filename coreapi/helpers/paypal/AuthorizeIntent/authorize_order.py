@@ -2,6 +2,7 @@ from coreapi.helpers.paypal import PayPalClient
 from paypalcheckoutsdk.orders import OrdersAuthorizeRequest
 import json
 
+
 class AuthorizeOrder(PayPalClient):
     
     """Sample request body to Authorize Order. This can be updated with the required fields as per need."""
