@@ -14,3 +14,17 @@ class CreateOrder(APIView):
         }
         return Response(context, status=status.HTTP_200_OK)
 
+
+class CaptureOrder(APIView):
+    def post(self, request):
+        data = request.data
+        order_id = data.get('order_id') or None
+
+        if order_id:
+            capture_order.capture_order(order_id=order_id)
+        else:
+            context = {
+                'message': "Order id not provided"
+            }
+            return Response(context, status=status.HTTP_406_NOT_ACCEPTABLE)
+
