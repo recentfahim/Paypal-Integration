@@ -37,3 +37,18 @@ class CaptureOrder(APIView):
         }
         return Response(context, status=status.HTTP_406_NOT_ACCEPTABLE)
 
+
+class CancelOrder(APIView):
+    def get(self, request):
+        params = request.query_params
+        token = params.get('token')
+
+        if token:
+            context = {
+                "message": "Payment has been cancelled"
+            }
+            return Response(context, status=status.HTTP_200_OK)
+        context = {
+            "message": "Something wrong happened or you just enter this url manually"
+        }
+        return Response(context, status=status.HTTP_200_OK)

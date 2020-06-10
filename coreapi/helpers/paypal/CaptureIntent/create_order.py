@@ -17,7 +17,7 @@ class CreateOrder(PayPalClient):
                 "intent": "CAPTURE",
                 "application_context": {
                     "return_url": "http://127.0.0.1:8000/api/v1/capture-order/",
-                    "cancel_url": "http://127.0.0.1:8000/api/v1/capture-order/",
+                    "cancel_url": "http://127.0.0.1:8000/api/v1/cancel-order/",
                     "brand_name": "EXAMPLE INC",
                     "landing_page": "BILLING",
                     "shipping_preference": "SET_PROVIDED_ADDRESS",
