@@ -16,7 +16,7 @@ class CreateOrder(PayPalClient):
             {
                 "intent": "CAPTURE",
                 "application_context": {
-                    "return_url": "http://127.0.0.1:3000/payment-successful/",
+                    "return_url": "http://127.0.0.1:3000/payment-process/",
                     "cancel_url": "http://127.0.0.1:3000/api/v1/payment-cancel/",
                     "brand_name": "EXAMPLE INC",
                     "landing_page": "BILLING",
