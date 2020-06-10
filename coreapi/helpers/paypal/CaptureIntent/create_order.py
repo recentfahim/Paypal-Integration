@@ -109,7 +109,7 @@ class CreateOrder(PayPalClient):
     """ This is the sample function which can be sued to create an order. It uses the
         JSON body returned by buildRequestBody() to create an new Order."""
 
-    def create_order(self, debug=False):
+    def create_order(self, debug=True):
         request = OrdersCreateRequest()
         request.headers['prefer'] = 'return=representation'
         request.request_body(self.build_request_body())
@@ -120,12 +120,14 @@ class CreateOrder(PayPalClient):
             print('Order ID: ', response.result.id)
             print('Intent: ', response.result.intent)
             print('Links:')
+            approve_link = ''
+            print(response.result.links[1].href)
             for link in response.result.links:
                 print('\t{}: {}\tCall Type: {}'.format(link.rel, link.href, link.method))
-            print('Total Amount: {} {}'.format(response.result.purchase_units[0].amount.currency_code,
-                                               response.result.purchase_units[0].amount.value))
-            json_data = self.object_to_json(response.result)
-            print("json_data: ", json.dumps(json_data,indent=4))
+                if link.rel == 'approve':
+                    approve_link = link.href
+
+            return response.result.id, approve_link
         return response
 
 """This is the driver function which invokes the createOrder function to create
